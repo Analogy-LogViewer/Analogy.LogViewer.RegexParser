@@ -10,29 +10,33 @@ namespace Analogy.LogViewer.RegexParser.Managers
         private static readonly Lazy<UserSettingsManager> _instance =
             new Lazy<UserSettingsManager>(() => new UserSettingsManager());
         public static UserSettingsManager UserSettings { get; set; } = _instance.Value;
-        public string SerilogFileSetting { get; private set; } = "AnalogySerilogSettings.json";
-        public SerilogSettings Settings { get; set; }
+        public string RegexFileSetting { get; private set; } = "AnalogyRegexSettings.json";
+        public RegexSettings Settings { get; set; }
 
 
         public UserSettingsManager()
         {
-            if (File.Exists(SerilogFileSetting))
+            if (File.Exists(RegexFileSetting))
             {
+                var settings = new JsonSerializerSettings
+                {
+                    ObjectCreationHandling = ObjectCreationHandling.Replace
+                };
                 try
                 {
-                    string data = File.ReadAllText(SerilogFileSetting);
-                    Settings = JsonConvert.DeserializeObject<SerilogSettings>(data);
+                    string data = File.ReadAllText(RegexFileSetting);
+                    Settings = JsonConvert.DeserializeObject<RegexSettings>(data, settings);
                 }
                 catch (Exception ex)
                 {
-                    LogManager.Instance.LogException(ex, "Analogy Serilog Parser", "Error loading user setting file");
-                    Settings = new SerilogSettings();
+                    LogManager.Instance.LogException(ex, "Analogy Regex Parser", "Error loading user setting file");
+                    Settings = new RegexSettings();
 
                 }
             }
             else
             {
-                Settings = new SerilogSettings();
+                Settings = new RegexSettings();
             }
 
         }
@@ -41,11 +45,11 @@ namespace Analogy.LogViewer.RegexParser.Managers
         {
             try
             {
-                File.WriteAllText(SerilogFileSetting, JsonConvert.SerializeObject(Settings));
+                File.WriteAllText(RegexFileSetting, JsonConvert.SerializeObject(Settings));
             }
             catch (Exception e)
             {
-                LogManager.Instance.LogException(e, "Analogy Serilog Parser", "Error saving settings: " + e.Message);
+                LogManager.Instance.LogException(e, "Analogy Regular Expression Parser", "Error saving settings: " + e.Message);
             }
 
 

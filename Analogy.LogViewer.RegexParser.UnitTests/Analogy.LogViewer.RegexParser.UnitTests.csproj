@@ -60,9 +60,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Analogy.LogViewer.Serilog\Analogy.LogViewer.Serilog.csproj">
-      <Project>{495befbf-44b2-4f3c-bc5a-ed23298779c0}</Project>
-      <Name>Analogy.LogViewer.Serilog</Name>
+    <ProjectReference Include="..\Analogy.LogViewer.RegexParser\Analogy.LogViewer.RegexParser.csproj">
+      <Project>{3bd6935b-2419-47f0-8246-29c4b7d63c04}</Project>
+      <Name>Analogy.LogViewer.RegexParser</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

@@ -8,7 +8,7 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
     public class DataProvidersFactory : IAnalogyDataProvidersFactory
     {
         public Guid FactoryId { get; } = PrimaryFactory.Id;
-        public string Title { get; } = "Serilog Parser";
+        public string Title { get; } = "Regular Expression Parser";
 
         public IEnumerable<IAnalogyDataProvider> DataProviders { get; } =
             new List<IAnalogyDataProvider> { new OfflineDataProvider() };

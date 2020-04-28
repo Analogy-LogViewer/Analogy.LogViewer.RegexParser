@@ -15,7 +15,7 @@ namespace Analogy.LogViewer.RegexParser
         private AnalogyLogMessage _current;
         private RegexPattern _lastUsedPattern;
         private readonly List<AnalogyLogMessage> _messages = new List<AnalogyLogMessage>();
-        private readonly List<RegexPattern> _logPatterns;
+        private List<RegexPattern> _logPatterns;
         private readonly bool updateUIAfterEachParsedLine;
         private IAnalogyLogger Logger { get; }
 
@@ -59,7 +59,7 @@ namespace Analogy.LogViewer.RegexParser
 
         }
 
-
+        public void SetRegexPatterns(List<RegexPattern> logPatterns) => _logPatterns = logPatterns;
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool TryParse(string line, RegexPattern regex, out AnalogyLogMessage message)
         {

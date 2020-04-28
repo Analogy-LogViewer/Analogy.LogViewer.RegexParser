@@ -12,7 +12,7 @@ namespace Analogy.LogViewer.RegexParser
 {
     public partial class SerilogUCSettings : UserControl
     {
-        private SerilogSettings Settings => UserSettingsManager.UserSettings.Settings;
+        private RegexSettings Settings => UserSettingsManager.UserSettings.Settings;
         public SerilogUCSettings()
         {
             InitializeComponent();
@@ -40,7 +40,7 @@ namespace Analogy.LogViewer.RegexParser
         private void btnExportSettings_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Analogy Serilog Settings (*.serilogsettings)|*.serilogsettings";
+            saveFileDialog.Filter = "Analogy Regex Settings (*.regexsettings)|*.regexsettings";
             saveFileDialog.Title = @"Export settings";
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
@@ -65,15 +65,15 @@ namespace Analogy.LogViewer.RegexParser
         private void btnImport_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Analogy Serilog Settings (*.Json)|*.json";
-            openFileDialog1.Title = @"Import Serilog settings";
+            openFileDialog1.Filter = "Analogy Regex Settings (*.regexsettings)|*.regexsettings";
+            openFileDialog1.Title = @"Import Regex settings";
             openFileDialog1.Multiselect = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
                     var json = File.ReadAllText(openFileDialog1.FileName);
-                    SerilogSettings settings = JsonConvert.DeserializeObject<SerilogSettings>(json);
+                    RegexSettings settings = JsonConvert.DeserializeObject<RegexSettings>(json);
                     LoadSettings(settings);
                     MessageBox.Show("File Imported. Save settings if desired", @"Import settings", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
@@ -87,11 +87,12 @@ namespace Analogy.LogViewer.RegexParser
             }
         }
 
-        private void LoadSettings(SerilogSettings logSettings)
+        private void LoadSettings(RegexSettings logSettings)
         {
             txtbDirectory.Text = Settings.Directory;
             txtbOpenFileFilters.Text = Settings.FileOpenDialogFilters;
             txtbSupportedFiles.Text = string.Join(";", Settings.SupportFormats.ToList());
+            lstbRegularExpressions.Items.Clear();
             lstbRegularExpressions.Items.AddRange(Settings.RegexPatterns.ToArray());
             txtbDateTimeFormat.Text = Settings.RegexPatterns.First().DateTimeFormat;
             txtbSupportedFiles.Text = string.Join(";", logSettings.SupportFormats);
@@ -134,7 +135,7 @@ namespace Analogy.LogViewer.RegexParser
         private void btnTest_Click(object sender, EventArgs e)
         {
             RegexPattern p = new RegexPattern(txtbRegEx.Text, txtbDateTimeFormat.Text, "");
-            bool valid = Regex.RegexParser.CheckRegex(txtbTest.Text, p, out AnalogyLogMessage m);
+            bool valid = RegexParser.CheckRegex(txtbTest.Text, p, out AnalogyLogMessage m);
             if (valid)
             {
                 lblResult.Text = "Valid Regular Expression";

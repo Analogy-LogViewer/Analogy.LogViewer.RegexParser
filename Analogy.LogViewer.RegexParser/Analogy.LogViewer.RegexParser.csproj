@@ -10,18 +10,18 @@
     <ApplicationIcon />
     <StartupObject />
     <Authors>Lior Banai</Authors>
-    <Description>Analogy Serilog Parser for Compact Formatting (*.clef files)</Description>
+    <Description>Regular Expression Parser for Analogy Log Viewer</Description>
     <Copyright>Lior Banai 2020</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Initial Analogy Serilog Parser for Compact Formatting (*.clef files)</PackageReleaseNotes>
+    <PackageReleaseNotes>Initial Regular Expression Parser for Analogy Log Viewer</PackageReleaseNotes>
     <PackageIcon>AnalogySerilog.png</PackageIcon>
     <PackageIconUrl />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.3</Version>
-    <AssemblyVersion>1.1.3.0</AssemblyVersion>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <Company>Analogy.LogViewer</Company>
   </PropertyGroup>
 

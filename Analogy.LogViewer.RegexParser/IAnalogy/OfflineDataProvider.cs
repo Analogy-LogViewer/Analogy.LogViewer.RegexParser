@@ -1,5 +1,6 @@
 ﻿using Analogy.Interfaces;
 using Analogy.LogViewer.RegexParser.Managers;
+using Analogy.LogViewer.RegexParser.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -32,71 +33,80 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
         public (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage)
             => (Color.Empty, Color.Empty);
 
-        private Regex.RegexParser Parser { get; set; }
+        private RegexParser Parser { get; set; }
         public OfflineDataProvider()
         {
+            Parser = new RegexParser(UserSettingsManager.UserSettings.Settings.RegexPatterns, true,
+                LogManager.Instance);
         }
         public async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
         {
             if (CanOpenFile(fileName))
             {
-                switch (UserSettingsManager.UserSettings.Settings.Format)
-                {
+                Parser.SetRegexPatterns(UserSettingsManager.UserSettings.Settings.RegexPatterns);
+                return await Parser.ParseLog(fileName, token, messagesHandler);
 
-                        return await new Regex.RegexParser(UserSettingsManager.UserSettings.Settings.RegexPatterns, true,
-                            LogManager.Instance).ParseLog(fileName, token, messagesHandler);
-                break;
             }
-        }
             return new List<AnalogyLogMessage>(0);
         }
 
-    public IEnumerable<FileInfo> GetSupportedFiles(DirectoryInfo dirInfo, bool recursiveLoad)
+
+        public IEnumerable<FileInfo> GetSupportedFiles(DirectoryInfo dirInfo, bool recursiveLoad)
         => GetSupportedFilesInternal(dirInfo, recursiveLoad);
 
-    public Task SaveAsync(List<AnalogyLogMessage> messages, string fileName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool CanOpenFile(string fileName)
-    {
-        return fileName.EndsWith(".Clef", StringComparison.InvariantCultureIgnoreCase);
-    }
-
-    public bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
-
-
-    public Task InitializeDataProviderAsync(IAnalogyLogger logger)
-    {
-        LogManager.Instance.SetLogger(logger);
-        return Task.CompletedTask;
-
-    }
-
-    public void MessageOpened(AnalogyLogMessage message)
-    {
-        //nop
-    }
-
-    public static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
-    {
-        List<FileInfo> files = dirInfo.GetFiles("*.clef").ToList();
-        if (!recursive)
-            return files;
-        try
+        public Task SaveAsync(List<AnalogyLogMessage> messages, string fileName)
         {
-            foreach (DirectoryInfo dir in dirInfo.GetDirectories())
+            throw new NotImplementedException();
+        }
+
+        public bool CanOpenFile(string fileName)
+        {
+            foreach (string pattern in UserSettingsManager.UserSettings.Settings.SupportFormats)
             {
-                files.AddRange(GetSupportedFilesInternal(dir, true));
+                if (PatternMatcher.StrictMatchPattern(pattern, fileName))
+                    return true;
             }
-        }
-        catch (Exception)
-        {
-            return files;
+            return false;
         }
 
-        return files;
+        public bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
+
+
+        public Task InitializeDataProviderAsync(IAnalogyLogger logger)
+        {
+            LogManager.Instance.SetLogger(logger);
+            return Task.CompletedTask;
+
+        }
+
+        public void MessageOpened(AnalogyLogMessage message)
+        {
+            //nop
+        }
+
+        public static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
+        {
+            List<FileInfo> files = new List<FileInfo>();
+            foreach (string pattern in UserSettingsManager.UserSettings.Settings.SupportFormats)
+            {
+                files.AddRange(dirInfo.GetFiles(pattern).ToList());
+            }
+
+            if (!recursive)
+                return files;
+            try
+            {
+                foreach (DirectoryInfo dir in dirInfo.GetDirectories())
+                {
+                    files.AddRange(GetSupportedFilesInternal(dir, true));
+                }
+            }
+            catch (Exception)
+            {
+                return files;
+            }
+
+            return files;
+        }
     }
-}
 }
