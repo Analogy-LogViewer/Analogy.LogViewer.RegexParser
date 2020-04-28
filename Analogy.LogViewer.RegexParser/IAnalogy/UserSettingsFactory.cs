@@ -10,7 +10,7 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
     public class UserSettingsFactory : IAnalogyDataProviderSettings
     {
         public string Title { get; } = "Regex User Settings";
-        public UserControl DataProviderSettings { get; } = new SerilogUCSettings();
+        public UserControl DataProviderSettings { get; } = new RegexSettingsUC();
         public Image SmallImage { get; } = Resources.AnalogySerilog16x16;
         public Image LargeImage { get; } = Resources.AnalogySerilog32x32;
         public Guid FactoryId { get; set; } = PrimaryFactory.Id;
@@ -18,7 +18,7 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
 
         public Task SaveSettingsAsync()
         {
-            ((SerilogUCSettings)DataProviderSettings)?.SaveSettings();
+            ((RegexSettingsUC)DataProviderSettings)?.SaveSettings();
             return Task.CompletedTask;
         }
     }

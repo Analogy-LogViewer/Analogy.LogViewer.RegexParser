@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Analogy.LogViewer.RegexParser
 {
-    public partial class SerilogUCSettings : UserControl
+    public partial class RegexSettingsUC : UserControl
     {
         private RegexSettings Settings => UserSettingsManager.UserSettings.Settings;
-        public SerilogUCSettings()
+        public RegexSettingsUC()
         {
             InitializeComponent();
         }

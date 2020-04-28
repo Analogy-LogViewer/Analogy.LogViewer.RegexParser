@@ -1,6 +1,6 @@
 ﻿namespace Analogy.LogViewer.RegexParser
 {
-    partial class SerilogUCSettings
+    partial class RegexSettingsUC
     {
         /// <summary>
         /// Required designer variable.
@@ -344,7 +344,7 @@
             this.lblOpenfilesFilters.TabIndex = 46;
             this.lblOpenfilesFilters.Text = "Open file Filter:";
             // 
-            // SerilogUCSettings
+            // RegexSettingsUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -360,7 +360,7 @@
             this.Controls.Add(this.btnExportSettings);
             this.Controls.Add(this.btnSave);
             this.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.Name = "SerilogUCSettings";
+            this.Name = "RegexSettingsUC";
             this.Size = new System.Drawing.Size(1100, 757);
             this.Load += new System.EventHandler(this.Settings_Load);
             this.tcSetttings.ResumeLayout(false);
