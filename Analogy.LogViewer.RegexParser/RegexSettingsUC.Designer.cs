@@ -84,7 +84,7 @@
             // 
             // txtbSupportedFiles
             // 
-            this.txtbSupportedFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbSupportedFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbSupportedFiles.Location = new System.Drawing.Point(197, 73);
             this.txtbSupportedFiles.Name = "txtbSupportedFiles";
@@ -114,7 +114,7 @@
             // 
             // txtbDirectory
             // 
-            this.txtbDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbDirectory.Location = new System.Drawing.Point(197, 8);
             this.txtbDirectory.Name = "txtbDirectory";
@@ -143,6 +143,9 @@
             // 
             // tcSetttings
             // 
+            this.tcSetttings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tcSetttings.Controls.Add(this.tabPage2);
             this.tcSetttings.Location = new System.Drawing.Point(6, 129);
             this.tcSetttings.Name = "tcSetttings";
@@ -184,7 +187,7 @@
             // label1
             // 
             this.label1.AccessibleDescription = "";
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoEllipsis = true;
             this.label1.Location = new System.Drawing.Point(6, 78);
@@ -218,7 +221,7 @@
             // 
             // lstbRegularExpressions
             // 
-            this.lstbRegularExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lstbRegularExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstbRegularExpressions.FormattingEnabled = true;
             this.lstbRegularExpressions.ItemHeight = 18;
@@ -229,8 +232,8 @@
             // 
             // gbresult
             // 
-            this.gbresult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.gbresult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbresult.Controls.Add(this.lblResultMessage);
             this.gbresult.Controls.Add(this.lblResult);
@@ -259,7 +262,7 @@
             // 
             // txtbTest
             // 
-            this.txtbTest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbTest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbTest.Location = new System.Drawing.Point(119, 266);
             this.txtbTest.Name = "txtbTest";
@@ -278,7 +281,7 @@
             // 
             // txtbDateTimeFormat
             // 
-            this.txtbDateTimeFormat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbDateTimeFormat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbDateTimeFormat.Location = new System.Drawing.Point(188, 37);
             this.txtbDateTimeFormat.Name = "txtbDateTimeFormat";
@@ -288,7 +291,7 @@
             // 
             // txtbRegEx
             // 
-            this.txtbRegEx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbRegEx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbRegEx.Location = new System.Drawing.Point(188, 6);
             this.txtbRegEx.Name = "txtbRegEx";
@@ -328,7 +331,7 @@
             // 
             // txtbOpenFileFilters
             // 
-            this.txtbOpenFileFilters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtbOpenFileFilters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtbOpenFileFilters.Location = new System.Drawing.Point(197, 42);
             this.txtbOpenFileFilters.Name = "txtbOpenFileFilters";

@@ -17,7 +17,6 @@ namespace Analogy.LogViewer.RegexParser
             SupportFormats = new List<string> { "*.log" };
             RegexPatterns = new List<RegexPattern>();
             RegexPatterns.Add(new RegexPattern(@"\$(?<Date>\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2},\d{3})+\|+(?<Thread>\d+)+\|(?<Level>\w+)+\|+(?<Source>.*)\|(?<Text>.*)", "yyyy-MM-dd HH:mm:ss,fff", ""));
-
         }
 
 
