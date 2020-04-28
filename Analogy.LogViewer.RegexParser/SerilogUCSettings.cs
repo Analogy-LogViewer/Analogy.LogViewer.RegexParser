@@ -96,7 +96,6 @@ namespace Analogy.LogViewer.RegexParser
             lstbRegularExpressions.Items.AddRange(Settings.RegexPatterns.ToArray());
             txtbDateTimeFormat.Text = Settings.RegexPatterns.First().DateTimeFormat;
             txtbSupportedFiles.Text = string.Join(";", logSettings.SupportFormats);
-            rbtnCLEF.Checked = true;
         }
 
         private void btnOpenFolder_Click(object sender, EventArgs e)
@@ -112,7 +111,7 @@ namespace Analogy.LogViewer.RegexParser
             }
         }
 
-        private void NLogSettings_Load(object sender, EventArgs e)
+        private void Settings_Load(object sender, EventArgs e)
         {
             LoadSettings(UserSettingsManager.UserSettings.Settings);
         }
