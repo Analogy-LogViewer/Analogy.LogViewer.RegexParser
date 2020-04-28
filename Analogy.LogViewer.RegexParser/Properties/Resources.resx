@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AnalogySerilog" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AnalogySerilog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AnalogyRegex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\Assets\AnalogyRegex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AnalogySerilog16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AnalogySerilog16x16.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AnalogyRegex16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AnalogyRegex16x16.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AnalogySerilog32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AnalogySerilog32x32.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AnalogyRegex32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AnalogyRegex32x32.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

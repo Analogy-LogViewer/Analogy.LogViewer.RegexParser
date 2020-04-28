@@ -11,8 +11,8 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
     {
         public string Title { get; } = "Regex User Settings";
         public UserControl DataProviderSettings { get; } = new RegexSettingsUC();
-        public Image SmallImage { get; } = Resources.AnalogySerilog16x16;
-        public Image LargeImage { get; } = Resources.AnalogySerilog32x32;
+        public Image SmallImage { get; } = Resources.AnalogyRegex16x16;
+        public Image LargeImage { get; } = Resources.AnalogyRegex32x32;
         public Guid FactoryId { get; set; } = PrimaryFactory.Id;
         public Guid ID { get; set; } = new Guid("108B0266-E0FB-4A02-B62F-DBB55CA4FEF8");
 

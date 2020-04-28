@@ -13,11 +13,11 @@
     <Description>Regular Expression Parser for Analogy Log Viewer</Description>
     <Copyright>Lior Banai 2020</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.Serilog</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>Initial Regular Expression Parser for Analogy Log Viewer</PackageReleaseNotes>
-    <PackageIcon>AnalogySerilog.png</PackageIcon>
+    <PackageIcon>AnalogyRegex.png</PackageIcon>
     <PackageIconUrl />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>1.0.0</Version>
@@ -56,7 +56,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Resources\AnalogySerilog.png">
+    <None Include="..\Assets\AnalogyRegex.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
