@@ -25,7 +25,7 @@ In this parser you need to define your custom regex to match you log format in t
 
 ![Serilog Settings](Assets/regexSettings.jpg)
 
-with the currect regular expression you can parse you custom format. For example: in the screenshot this example log can be parsed:
+with the correct regular expression you can parse you custom format. For example: in the screenshot this example log can be parsed:
 ```
 $2020-04-24 13:18:23,207|1|INFO|logsource|My Manager App Starting...
 $2020-04-24 13:28:24,380|1|WARN|files|file not found
