@@ -36,7 +36,7 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
         private RegexParser Parser { get; set; }
         public OfflineDataProvider()
         {
-            Parser = new RegexParser(UserSettingsManager.UserSettings.Settings.RegexPatterns, true,
+            Parser = new RegexParser(UserSettingsManager.UserSettings.Settings.RegexPatterns, false,
                 LogManager.Instance);
         }
         public async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
