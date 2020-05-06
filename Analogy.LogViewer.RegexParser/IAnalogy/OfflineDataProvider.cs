@@ -47,7 +47,9 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
                 return await Parser.ParseLog(fileName, token, messagesHandler);
 
             }
-            return new List<AnalogyLogMessage>(0);
+            AnalogyLogMessage m = new AnalogyLogMessage($"File {fileName} is not supported", AnalogyLogLevel.Warning, AnalogyLogClass.General, OptionalTitle);
+            messagesHandler.AppendMessage(m, OptionalTitle);
+            return new List<AnalogyLogMessage> { m };
         }
 
 
