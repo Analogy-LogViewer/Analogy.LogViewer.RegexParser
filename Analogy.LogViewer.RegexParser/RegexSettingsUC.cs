@@ -94,7 +94,6 @@ namespace Analogy.LogViewer.RegexParser
             txtbSupportedFiles.Text = string.Join(";", Settings.SupportFormats.ToList());
             lstbRegularExpressions.Items.Clear();
             lstbRegularExpressions.Items.AddRange(Settings.RegexPatterns.ToArray());
-            txtbDateTimeFormat.Text = Settings.RegexPatterns.First().DateTimeFormat;
             txtbSupportedFiles.Text = string.Join(";", logSettings.SupportFormats);
         }
 
