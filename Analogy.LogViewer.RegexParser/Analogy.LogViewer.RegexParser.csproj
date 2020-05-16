@@ -16,12 +16,12 @@
     <PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Initial Regular Expression Parser for Analogy Log Viewer</PackageReleaseNotes>
+    <PackageReleaseNotes>Update  to align with interface version 2.2.7</PackageReleaseNotes>
     <PackageIcon>AnalogyRegex.png</PackageIcon>
     <PackageIconUrl />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.0</Version>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
     <Company>Analogy.LogViewer</Company>
   </PropertyGroup>
 
