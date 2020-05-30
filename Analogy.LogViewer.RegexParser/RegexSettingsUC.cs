@@ -164,5 +164,14 @@ namespace Analogy.LogViewer.RegexParser
                 MessageBox.Show($"Incorrect filter: {exception.Message}", "Invalid filter text", MessageBoxButtons.OK);
             }
         }
+
+        private void lstbRegularExpressions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstbRegularExpressions.SelectedItem is RegexPattern regexPattern)
+            {
+                txtbRegEx.Text = regexPattern.Pattern;
+                txtbDateTimeFormat.Text = regexPattern.DateTimeFormat;
+            }
+        }
     }
 }

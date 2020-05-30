@@ -230,6 +230,7 @@
             this.lstbRegularExpressions.Name = "lstbRegularExpressions";
             this.lstbRegularExpressions.Size = new System.Drawing.Size(965, 130);
             this.lstbRegularExpressions.TabIndex = 54;
+            this.lstbRegularExpressions.SelectedIndexChanged += new System.EventHandler(this.lstbRegularExpressions_SelectedIndexChanged);
             // 
             // gbresult
             // 
