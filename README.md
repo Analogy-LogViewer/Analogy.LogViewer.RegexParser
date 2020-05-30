@@ -14,7 +14,7 @@
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser/releases">
     <img src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer.RegexParser" img alt="Latest Release"/>
 </a>
-<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser/compare/V1.0.0...master">
+<a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser/compare/V1.0.2...master">
     <img src="https://img.shields.io/github/commits-since/Analogy-LogViewer/Analogy.LogViewer.RegexParser/latest" img alt="Commits Since Latest Release"/>
 </a>
 </p>
