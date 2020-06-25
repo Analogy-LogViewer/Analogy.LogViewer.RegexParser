@@ -63,12 +63,8 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
 
         public bool CanOpenFile(string fileName)
         {
-            foreach (string pattern in UserSettingsManager.UserSettings.Settings.SupportFormats)
-            {
-                if (PatternMatcher.StrictMatchPattern(pattern, fileName))
-                    return true;
-            }
-            return false;
+            return UserSettingsManager.UserSettings.Settings.SupportFormats.Any(pattern =>
+                PatternMatcher.StrictMatchPattern(pattern, fileName));
         }
 
         public bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);

@@ -24,15 +24,8 @@ namespace Analogy.LogViewer.RegexParser
         }
         public void SaveSettings()
         {
-#if NETCOREAPP3_1
-            Settings.SupportFormats = txtbSupportedFiles.Text.Split(";", StringSplitOptions.RemoveEmptyEntries).ToList();
-#endif
-#if !NETCOREAPP3_1
-            Settings.SupportFormats = txtbSupportedFiles.Text.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries).ToList();
-#endif
             Settings.Directory = txtbDirectory.Text;
             Settings.FileOpenDialogFilters = txtbOpenFileFilters.Text;
-            Settings.SupportFormats = txtbSupportedFiles.Text.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries).ToList();
             Settings.RegexPatterns = lstbRegularExpressions.Items.Count > 0 ? lstbRegularExpressions.Items.Cast<RegexPattern>().ToList() : new List<RegexPattern>();
             UserSettingsManager.UserSettings.Save();
         }
@@ -117,9 +110,21 @@ namespace Analogy.LogViewer.RegexParser
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtbRegEx.Text)) return;
-            var rp = new RegexPattern(txtbRegEx.Text, txtbDateTimeFormat.Text, txtbGuidFormat.Text);
+            if (string.IsNullOrEmpty(txtbRegEx.Text) || string.IsNullOrEmpty(txtbSupportedFiles.Text)) return;
+            var files = GetFiles();
+            var rp = new RegexPattern(txtbRegEx.Text, txtbDateTimeFormat.Text, txtbGuidFormat.Text, files);
             lstbRegularExpressions.Items.Add(rp);
+        }
+
+        private List<string> GetFiles()
+        {
+#if NETCOREAPP3_1
+            var files = txtbSupportedFiles.Text.Split(";", StringSplitOptions.RemoveEmptyEntries).ToList();
+#endif
+#if !NETCOREAPP3_1
+            var files = txtbSupportedFiles.Text.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+#endif
+            return files;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -132,7 +137,8 @@ namespace Analogy.LogViewer.RegexParser
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            RegexPattern p = new RegexPattern(txtbRegEx.Text, txtbDateTimeFormat.Text, "");
+            var files = GetFiles();
+            RegexPattern p = new RegexPattern(txtbRegEx.Text, txtbDateTimeFormat.Text, "", files);
             bool valid = RegexParser.CheckRegex(txtbTest.Text, p, out AnalogyLogMessage m);
             if (valid)
             {
@@ -171,6 +177,8 @@ namespace Analogy.LogViewer.RegexParser
             {
                 txtbRegEx.Text = regexPattern.Pattern;
                 txtbDateTimeFormat.Text = regexPattern.DateTimeFormat;
+                txtbGuidFormat.Text = regexPattern.GuidFormat;
+                txtbSupportedFiles.Text = string.Join(";", regexPattern.SupportFormats);
             }
         }
     }

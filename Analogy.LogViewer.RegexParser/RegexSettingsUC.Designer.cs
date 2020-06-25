@@ -87,20 +87,20 @@
             // 
             this.txtbSupportedFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbSupportedFiles.Location = new System.Drawing.Point(197, 73);
+            this.txtbSupportedFiles.Location = new System.Drawing.Point(466, 68);
             this.txtbSupportedFiles.Name = "txtbSupportedFiles";
-            this.txtbSupportedFiles.Size = new System.Drawing.Size(899, 26);
+            this.txtbSupportedFiles.Size = new System.Drawing.Size(610, 26);
             this.txtbSupportedFiles.TabIndex = 9;
             this.txtbSupportedFiles.Text = "*.Clef";
             // 
             // label2
             // 
             this.label2.AutoEllipsis = true;
-            this.label2.Location = new System.Drawing.Point(3, 76);
+            this.label2.Location = new System.Drawing.Point(6, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(188, 50);
+            this.label2.Size = new System.Drawing.Size(454, 26);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Supported Log Formats (use ; as separator):";
+            this.label2.Text = "Supported Log Formats (use ; as separator: *.log;*.clef):";
             // 
             // btnImport
             // 
@@ -164,7 +164,9 @@
             this.tabPage2.Controls.Add(this.gbresult);
             this.tabPage2.Controls.Add(this.txtbTest);
             this.tabPage2.Controls.Add(this.lblLogTest);
+            this.tabPage2.Controls.Add(this.txtbSupportedFiles);
             this.tabPage2.Controls.Add(this.txtbDateTimeFormat);
+            this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.txtbRegEx);
             this.tabPage2.Controls.Add(this.lblDateTimeFormat);
             this.tabPage2.Controls.Add(this.lblRegex);
@@ -180,7 +182,7 @@
             // txtbGuidFormat
             // 
             this.txtbGuidFormat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbGuidFormat.Location = new System.Drawing.Point(652, 78);
+            this.txtbGuidFormat.Location = new System.Drawing.Point(652, 115);
             this.txtbGuidFormat.Name = "txtbGuidFormat";
             this.txtbGuidFormat.Size = new System.Drawing.Size(360, 26);
             this.txtbGuidFormat.TabIndex = 58;
@@ -191,7 +193,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoEllipsis = true;
-            this.label1.Location = new System.Drawing.Point(6, 78);
+            this.label1.Location = new System.Drawing.Point(6, 115);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(630, 47);
             this.label1.TabIndex = 57;
@@ -201,7 +203,7 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(986, 180);
+            this.btnDelete.Location = new System.Drawing.Point(986, 223);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(93, 25);
             this.btnDelete.TabIndex = 56;
@@ -212,7 +214,7 @@
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(1029, 76);
+            this.btnAdd.Location = new System.Drawing.Point(1029, 113);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(47, 25);
             this.btnAdd.TabIndex = 55;
@@ -226,7 +228,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstbRegularExpressions.FormattingEnabled = true;
             this.lstbRegularExpressions.ItemHeight = 18;
-            this.lstbRegularExpressions.Location = new System.Drawing.Point(9, 131);
+            this.lstbRegularExpressions.Location = new System.Drawing.Point(9, 174);
             this.lstbRegularExpressions.Name = "lstbRegularExpressions";
             this.lstbRegularExpressions.Size = new System.Drawing.Size(965, 130);
             this.lstbRegularExpressions.TabIndex = 54;
@@ -234,14 +236,13 @@
             // 
             // gbresult
             // 
-            this.gbresult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.gbresult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbresult.Controls.Add(this.lblResultMessage);
             this.gbresult.Controls.Add(this.lblResult);
-            this.gbresult.Location = new System.Drawing.Point(9, 294);
+            this.gbresult.Location = new System.Drawing.Point(9, 359);
             this.gbresult.Name = "gbresult";
-            this.gbresult.Size = new System.Drawing.Size(965, 235);
+            this.gbresult.Size = new System.Drawing.Size(965, 170);
             this.gbresult.TabIndex = 52;
             this.gbresult.TabStop = false;
             this.gbresult.Text = "Result";
@@ -251,7 +252,7 @@
             this.lblResultMessage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblResultMessage.Location = new System.Drawing.Point(3, 41);
             this.lblResultMessage.Name = "lblResultMessage";
-            this.lblResultMessage.Size = new System.Drawing.Size(959, 191);
+            this.lblResultMessage.Size = new System.Drawing.Size(959, 126);
             this.lblResultMessage.TabIndex = 31;
             // 
             // lblResult
@@ -266,7 +267,7 @@
             // 
             this.txtbTest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbTest.Location = new System.Drawing.Point(119, 266);
+            this.txtbTest.Location = new System.Drawing.Point(119, 309);
             this.txtbTest.Name = "txtbTest";
             this.txtbTest.Size = new System.Drawing.Size(855, 26);
             this.txtbTest.TabIndex = 51;
@@ -275,7 +276,7 @@
             // 
             this.lblLogTest.AccessibleDescription = "";
             this.lblLogTest.AutoSize = true;
-            this.lblLogTest.Location = new System.Drawing.Point(6, 269);
+            this.lblLogTest.Location = new System.Drawing.Point(6, 312);
             this.lblLogTest.Name = "lblLogTest";
             this.lblLogTest.Size = new System.Drawing.Size(109, 18);
             this.lblLogTest.TabIndex = 50;
@@ -285,9 +286,9 @@
             // 
             this.txtbDateTimeFormat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbDateTimeFormat.Location = new System.Drawing.Point(188, 37);
+            this.txtbDateTimeFormat.Location = new System.Drawing.Point(200, 37);
             this.txtbDateTimeFormat.Name = "txtbDateTimeFormat";
-            this.txtbDateTimeFormat.Size = new System.Drawing.Size(888, 26);
+            this.txtbDateTimeFormat.Size = new System.Drawing.Size(876, 26);
             this.txtbDateTimeFormat.TabIndex = 48;
             this.txtbDateTimeFormat.Text = "yyyy-MM-dd HH:mm:ss,fff";
             // 
@@ -295,9 +296,9 @@
             // 
             this.txtbRegEx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbRegEx.Location = new System.Drawing.Point(188, 6);
+            this.txtbRegEx.Location = new System.Drawing.Point(200, 6);
             this.txtbRegEx.Name = "txtbRegEx";
-            this.txtbRegEx.Size = new System.Drawing.Size(888, 26);
+            this.txtbRegEx.Size = new System.Drawing.Size(876, 26);
             this.txtbRegEx.TabIndex = 49;
             // 
             // lblDateTimeFormat
@@ -323,7 +324,7 @@
             // btnTest
             // 
             this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTest.Location = new System.Drawing.Point(1029, 266);
+            this.btnTest.Location = new System.Drawing.Point(1029, 309);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(47, 25);
             this.btnTest.TabIndex = 44;
@@ -372,8 +373,6 @@
             this.Controls.Add(this.txtbDirectory);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnImport);
-            this.Controls.Add(this.txtbSupportedFiles);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnExportSettings);
             this.Controls.Add(this.btnSave);
             this.Font = new System.Drawing.Font("Tahoma", 9F);
