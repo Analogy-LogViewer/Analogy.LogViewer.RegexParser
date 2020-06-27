@@ -86,11 +86,11 @@ namespace Analogy.LogViewer.RegexParser
                                 }
 
                                 continue;
-                            case AnalogyLogMessagePropertyName.ID:
+                            case AnalogyLogMessagePropertyName.Id:
                                 if (!string.IsNullOrEmpty(value) &&
                                     Guid.TryParseExact(value, regex.GuidFormat, out var guidValue))
                                 {
-                                    m.ID = guidValue;
+                                    m.Id = guidValue;
                                 }
 
                                 continue;
@@ -109,6 +109,9 @@ namespace Analogy.LogViewer.RegexParser
                             case AnalogyLogMessagePropertyName.MethodName:
                                 m.MethodName = value;
                                 continue;
+                            case AnalogyLogMessagePropertyName.MachineName:
+                                m.MachineName = value;
+                                continue ;
                             case AnalogyLogMessagePropertyName.FileName:
                                 m.FileName = value;
                                 continue;
@@ -123,19 +126,19 @@ namespace Analogy.LogViewer.RegexParser
                                 }
 
                                 continue;
-                            case AnalogyLogMessagePropertyName.ProcessID:
+                            case AnalogyLogMessagePropertyName.ProcessId:
                                 if (!string.IsNullOrEmpty(value) &&
                                     int.TryParse(value, out var processNum))
                                 {
-                                    m.ProcessID = processNum;
+                                    m.ProcessId = processNum;
                                 }
 
                                 continue;
-                            case AnalogyLogMessagePropertyName.Thread:
+                            case AnalogyLogMessagePropertyName.ThreadId:
                                 if (!string.IsNullOrEmpty(value) &&
                                     int.TryParse(value, out var threadNum))
                                 {
-                                    m.Thread = threadNum;
+                                    m.ThreadId = threadNum;
                                 }
 
                                 continue;
@@ -229,36 +232,39 @@ namespace Analogy.LogViewer.RegexParser
                                     m.Date = date;
                                 }
 
-                                break;
-                            case AnalogyLogMessagePropertyName.ID:
+                                continue;
+                            case AnalogyLogMessagePropertyName.Id:
                                 if (!string.IsNullOrEmpty(value) &&
                                     Guid.TryParseExact(value, regex.GuidFormat, out var guidValue))
                                 {
-                                    m.ID = guidValue;
+                                    m.Id = guidValue;
                                 }
 
-                                break;
+                                continue;
                             case AnalogyLogMessagePropertyName.Text:
                                 m.Text = value;
-                                break;
+                                continue;
                             case AnalogyLogMessagePropertyName.Category:
                                 m.Category = value;
-                                break;
+                                continue;
                             case AnalogyLogMessagePropertyName.Source:
                                 m.Source = value;
                                 break;
                             case AnalogyLogMessagePropertyName.Module:
                                 m.Module = value;
-                                break;
+                                continue;
                             case AnalogyLogMessagePropertyName.MethodName:
                                 m.MethodName = value;
-                                break;
+                                continue;
+                            case AnalogyLogMessagePropertyName.MachineName:
+                                m.MachineName = value;
+                                continue;
                             case AnalogyLogMessagePropertyName.FileName:
                                 m.FileName = value;
-                                break;
+                                continue;
                             case AnalogyLogMessagePropertyName.User:
                                 m.User = value;
-                                break;
+                                continue;
                             case AnalogyLogMessagePropertyName.LineNumber:
                                 if (!string.IsNullOrEmpty(value) &&
                                     int.TryParse(value, out var lineNum))
@@ -266,23 +272,23 @@ namespace Analogy.LogViewer.RegexParser
                                     m.LineNumber = lineNum;
                                 }
 
-                                break;
-                            case AnalogyLogMessagePropertyName.ProcessID:
+                                continue;
+                            case AnalogyLogMessagePropertyName.ProcessId:
                                 if (!string.IsNullOrEmpty(value) &&
                                     int.TryParse(value, out var processNum))
                                 {
-                                    m.ProcessID = processNum;
+                                    m.ProcessId = processNum;
                                 }
 
-                                break;
-                            case AnalogyLogMessagePropertyName.Thread:
+                                continue;
+                            case AnalogyLogMessagePropertyName.ThreadId:
                                 if (!string.IsNullOrEmpty(value) &&
                                     int.TryParse(value, out var threadNum))
                                 {
-                                    m.Thread = threadNum;
+                                    m.ThreadId = threadNum;
                                 }
 
-                                break;
+                                continue;
                             case AnalogyLogMessagePropertyName.Level:
                                 switch (value)
                                 {
@@ -312,7 +318,7 @@ namespace Analogy.LogViewer.RegexParser
                                         break;
                                 }
 
-                                break;
+                                continue;
                             case AnalogyLogMessagePropertyName.Class:
                                 if (string.IsNullOrEmpty(value))
                                     m.Class = AnalogyLogClass.General;
@@ -325,7 +331,7 @@ namespace Analogy.LogViewer.RegexParser
 
                                 }
 
-                                break;
+                                continue;
                             default:
                                 throw new ArgumentOutOfRangeException();
                         }
