@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -111,7 +112,7 @@ namespace Analogy.LogViewer.RegexParser
                                 continue;
                             case AnalogyLogMessagePropertyName.MachineName:
                                 m.MachineName = value;
-                                continue ;
+                                continue;
                             case AnalogyLogMessagePropertyName.FileName:
                                 m.FileName = value;
                                 continue;
@@ -357,43 +358,46 @@ namespace Analogy.LogViewer.RegexParser
             ILogMessageCreatedHandler messagesHandler)
         {
             _messages.Clear();
-            using (StreamReader reader = File.OpenText(fileName))
+            using (var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
-                string line;
-                while ((line = await reader.ReadLineAsync().ConfigureAwait(false)) != null)
+                using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
                 {
-                    AnalogyLogMessage entry = null;
-                    foreach (var logPattern in LogPatterns)
+                    string line;
+                    while ((line = await streamReader.ReadLineAsync().ConfigureAwait(false)) != null)
                     {
-                        if (TryParse(line, logPattern, out entry))
+                        AnalogyLogMessage entry = null;
+                        foreach (var logPattern in LogPatterns)
                         {
-                            break;
+                            if (TryParse(line, logPattern, out entry))
+                            {
+                                break;
+                            }
                         }
-                    }
 
-                    if (entry != null)
-                    {
-                        if (updateUIAfterEachParsedLine)
-                            messagesHandler.AppendMessage(entry, fileName);
-                        _current = entry;
-                        _messages.Add(_current);
-                    }
-                    else
-                    {
-                        if (_current == null)
+                        if (entry != null)
                         {
-                            _current = new AnalogyLogMessage { Text = line };
+                            if (updateUIAfterEachParsedLine)
+                                messagesHandler.AppendMessage(entry, fileName);
+                            _current = entry;
+                            _messages.Add(_current);
                         }
                         else
                         {
-                            _current.Text += Environment.NewLine + line;
+                            if (_current == null)
+                            {
+                                _current = new AnalogyLogMessage { Text = line };
+                            }
+                            else
+                            {
+                                _current.Text += Environment.NewLine + line;
+                            }
                         }
-                    }
 
-                    if (token.IsCancellationRequested)
-                    {
-                        messagesHandler.AppendMessages(_messages, fileName);
-                        return _messages;
+                        if (token.IsCancellationRequested)
+                        {
+                            messagesHandler.AppendMessages(_messages, fileName);
+                            return _messages;
+                        }
                     }
                 }
             }
