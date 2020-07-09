@@ -9,7 +9,7 @@ using Analogy.LogViewer.RegexParser.Properties;
 
 namespace Analogy.LogViewer.RegexParser.IAnalogy
 {
-    public class AnalogyComponentImages : IAnalogyComponentImages
+    public class RegexComponentImages : IAnalogyComponentImages
     {
         public Image GetLargeImage(Guid analogyComponentId)
         {
