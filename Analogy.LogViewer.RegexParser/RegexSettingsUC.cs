@@ -118,12 +118,8 @@ namespace Analogy.LogViewer.RegexParser
 
         private List<string> GetFiles()
         {
-#if NETCOREAPP3_1
-            var files = txtbSupportedFiles.Text.Split(";", StringSplitOptions.RemoveEmptyEntries).ToList();
-#endif
-#if !NETCOREAPP3_1
-            var files = txtbSupportedFiles.Text.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries).ToList();
-#endif
+
+            var files = txtbSupportedFiles.Text.Split(new[] { ";", "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
             return files;
         }
 
