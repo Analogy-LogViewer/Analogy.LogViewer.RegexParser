@@ -12,7 +12,6 @@
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser/blob/master/LICENSE.md">
     <img src="https://img.shields.io/github/license/Analogy-LogViewer/Analogy.LogViewer.RegexParser" img alt="License"/>
 </a>
-
  [![Nuget](https://img.shields.io/nuget/v/Analogy.LogViewer.RegexParser)](https://www.nuget.org/packages/Analogy.LogViewer.RegexParser/)
 <a href="https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser/releases">
     <img src="https://img.shields.io/github/v/release/Analogy-LogViewer/Analogy.LogViewer.RegexParser" img alt="Latest Release"/>
