@@ -11,7 +11,7 @@
 		<StartupObject />
 		<Authors>Lior Banai</Authors>
 		<Description>Regular Expression Parser for Analogy Log Viewer</Description>
-		<Copyright>Lior Banai 2020</Copyright>
+		<Copyright>Lior Banai © 2020</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser</RepositoryUrl>
@@ -20,16 +20,16 @@
 		<PackageIcon>AnalogyRegex.png</PackageIcon>
 		<PackageIconUrl />
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>1.0.7.1</Version>
-		<AssemblyVersion>1.0.7.1</AssemblyVersion>
+		<Version>1.0.7.2</Version>
+		<AssemblyVersion>1.0.7.2</AssemblyVersion>
 		<Company>Analogy.LogViewer</Company>
-		<FileVersion>1.0.7.1</FileVersion>
+		<FileVersion>1.0.7.2</FileVersion>
 		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Analogy.DataProviders.Extensions" Version="1.1.7.4" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.3.4" />
+		<PackageReference Include="Analogy.DataProviders.Extensions" Version="1.1.7.5" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.4.0" />
 		<PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
