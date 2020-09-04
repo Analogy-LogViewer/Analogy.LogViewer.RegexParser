@@ -13,8 +13,11 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
 {
     public class OfflineDataProvider : IAnalogyOfflineDataProvider
     {
-        public Guid ID { get; } = new Guid("F90ECD07-0CD4-4B90-987F-851D6BB5F11A");
+        public Guid Id { get; } = new Guid("F90ECD07-0CD4-4B90-987F-851D6BB5F11A");
         public string OptionalTitle { get; } = "Regex Parser";
+        public Image LargeImage => null;
+        public Image SmallImage => null;
+
         public bool CanSaveToLogFile { get; } = false;
         public string FileOpenDialogFilters => UserSettingsManager.UserSettings.Settings.FileOpenDialogFilters;
         public string FileSaveDialogFilters { get; } = string.Empty;
