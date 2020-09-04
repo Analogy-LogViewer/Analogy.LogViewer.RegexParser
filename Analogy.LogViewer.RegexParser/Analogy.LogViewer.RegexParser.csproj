@@ -20,15 +20,15 @@
 		<PackageIcon>AnalogyRegex.png</PackageIcon>
 		<PackageIconUrl />
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>1.0.8</Version>
-		<AssemblyVersion>1.0.8.0</AssemblyVersion>
+		<Version>1.1.0</Version>
+		<AssemblyVersion>1.1.0.0</AssemblyVersion>
 		<Company>Analogy.LogViewer</Company>
-		<FileVersion>1.0.8.0</FileVersion>
+		<FileVersion>1.1.0.0</FileVersion>
 		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.4.6" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.4.7" />
 		<PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
