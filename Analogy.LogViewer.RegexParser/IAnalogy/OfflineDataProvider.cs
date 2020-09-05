@@ -13,27 +13,27 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
 {
     public class OfflineDataProvider : IAnalogyOfflineDataProvider
     {
-        public Guid Id { get; set; } = new Guid("F90ECD07-0CD4-4B90-987F-851D6BB5F11A");
-        public string OptionalTitle { get; set; } = "Regex Parser";
-        public Image LargeImage { get; set; } = null;
-        public Image SmallImage { get; set; } = null;
+        public virtual Guid Id { get; set; } = new Guid("F90ECD07-0CD4-4B90-987F-851D6BB5F11A");
+        public virtual string OptionalTitle { get; set; } = "Regex Parser";
+        public virtual Image LargeImage { get; set; } = null;
+        public virtual Image SmallImage { get; set; } = null;
 
-        public bool CanSaveToLogFile { get; } = false;
-        public string FileOpenDialogFilters => UserSettingsManager.UserSettings.Settings.FileOpenDialogFilters;
-        public string FileSaveDialogFilters { get; } = string.Empty;
-        public IEnumerable<string> SupportFormats => UserSettingsManager.UserSettings.Settings.SupportFormats;
-        public bool DisableFilePoolingOption { get; } = false;
+        public virtual bool CanSaveToLogFile { get; } = false;
+        public virtual string FileOpenDialogFilters => UserSettingsManager.UserSettings.Settings.FileOpenDialogFilters;
+        public virtual string FileSaveDialogFilters { get; } = string.Empty;
+        public virtual IEnumerable<string> SupportFormats => UserSettingsManager.UserSettings.Settings.SupportFormats;
+        public virtual bool DisableFilePoolingOption { get; } = false;
 
-        public string InitialFolderFullPath =>
+        public virtual string InitialFolderFullPath =>
             (!string.IsNullOrEmpty(UserSettingsManager.UserSettings.Settings.Directory) &&
              Directory.Exists(UserSettingsManager.UserSettings.Settings.Directory))
                 ? UserSettingsManager.UserSettings.Settings.Directory
                 : Environment.CurrentDirectory;
-        public bool UseCustomColors { get; set; } = false;
-        public IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders()
+        public virtual bool UseCustomColors { get; set; } = false;
+        public virtual IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders()
             => Array.Empty<(string, string)>();
 
-        public (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage)
+        public virtual (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage)
             => (Color.Empty, Color.Empty);
 
         private RegexParser Parser { get; set; }
@@ -42,7 +42,7 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
             Parser = new RegexParser(UserSettingsManager.UserSettings.Settings.RegexPatterns, false,
                 LogManager.Instance);
         }
-        public async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
+        public virtual async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
         {
             if (CanOpenFile(fileName))
             {
@@ -56,36 +56,36 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
         }
 
 
-        public IEnumerable<FileInfo> GetSupportedFiles(DirectoryInfo dirInfo, bool recursiveLoad)
+        public virtual IEnumerable<FileInfo> GetSupportedFiles(DirectoryInfo dirInfo, bool recursiveLoad)
         => GetSupportedFilesInternal(dirInfo, recursiveLoad);
 
-        public Task SaveAsync(List<AnalogyLogMessage> messages, string fileName)
+        public virtual Task SaveAsync(List<AnalogyLogMessage> messages, string fileName)
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
 
-        public bool CanOpenFile(string fileName)
+        public virtual bool CanOpenFile(string fileName)
         {
             return UserSettingsManager.UserSettings.Settings.SupportFormats.Any(pattern =>
                 PatternMatcher.StrictMatchPattern(pattern, fileName));
         }
 
-        public bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
+        public virtual bool CanOpenAllFiles(IEnumerable<string> fileNames) => fileNames.All(CanOpenFile);
 
 
-        public Task InitializeDataProviderAsync(IAnalogyLogger logger)
+        public virtual Task InitializeDataProviderAsync(IAnalogyLogger logger)
         {
             LogManager.Instance.SetLogger(logger);
             return Task.CompletedTask;
 
         }
 
-        public void MessageOpened(AnalogyLogMessage message)
+        public virtual void MessageOpened(AnalogyLogMessage message)
         {
             //nop
         }
 
-        public static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
+        protected static List<FileInfo> GetSupportedFilesInternal(DirectoryInfo dirInfo, bool recursive)
         {
             List<FileInfo> files = new List<FileInfo>();
             foreach (string pattern in UserSettingsManager.UserSettings.Settings.SupportFormats)
