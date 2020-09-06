@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -14,28 +15,12 @@ namespace Analogy.LogViewer.RegexParser
     public class RegexParser
     {
         private AnalogyLogMessage _current;
-        private RegexPattern _lastUsedPattern;
+        private RegexPattern _matchedPattern;
         private readonly List<AnalogyLogMessage> _messages = new List<AnalogyLogMessage>();
         private List<RegexPattern> _logPatterns;
         private readonly bool updateUIAfterEachParsedLine;
         private IAnalogyLogger Logger { get; }
 
-        private IEnumerable<RegexPattern> LogPatterns
-        {
-            get
-            {
-                if (_lastUsedPattern != null)
-                    yield return _lastUsedPattern;
-                var oldLastUsedPattern = _lastUsedPattern;
-                foreach (var logPattern in _logPatterns)
-                {
-                    //skip last used pattern (returned first)
-                    if (oldLastUsedPattern == logPattern) continue;
-                    _lastUsedPattern = logPattern;
-                    yield return _lastUsedPattern;
-                }
-            }
-        }
 
         public static IEnumerable<string> RegexMembers { get; }
         private static Dictionary<string, AnalogyLogMessagePropertyName> regexMapper;
@@ -66,7 +51,7 @@ namespace Analogy.LogViewer.RegexParser
         {
             try
             {
-                Match match = System.Text.RegularExpressions.Regex.Match(line, regex.Pattern,
+                Match match = Regex.Match(line, regex.Pattern,
                     RegexOptions.Compiled | RegexOptions.IgnorePatternWhitespace);
                 if (match.Success)
                 {
@@ -213,7 +198,7 @@ namespace Analogy.LogViewer.RegexParser
         {
             try
             {
-                Match match = System.Text.RegularExpressions.Regex.Match(line, regex.Pattern,
+                Match match = Regex.Match(line, regex.Pattern,
                     RegexOptions.Compiled | RegexOptions.IgnorePatternWhitespace);
                 if (match.Success)
                 {
@@ -360,18 +345,51 @@ namespace Analogy.LogViewer.RegexParser
             _messages.Clear();
             using (var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
+                bool TryParseInternal(string line, out AnalogyLogMessage msg)
+                {
+                    if (_matchedPattern != null)
+                    {
+                        if (TryParse(line, _matchedPattern, out var m1))
+                        {
+                            msg = m1;
+                            return true;
+                        }
+                        msg = null;
+                        return false;
+                    }
+
+                    foreach (var logPattern in _logPatterns)
+                    {
+                        if (TryParse(line, logPattern, out var m2))
+                        {
+                            msg = m2;
+                            _matchedPattern = logPattern;
+                            return true;
+
+                        }
+                    }
+
+                    msg = null;
+                    return false;
+
+                }
                 using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
                 {
-                    string line;
-                    while ((line = await streamReader.ReadLineAsync().ConfigureAwait(false)) != null)
+                    string line = string.Empty;
+                    string currentLine;
+                    while ((currentLine = await streamReader.ReadLineAsync().ConfigureAwait(false)) != null)
                     {
-                        AnalogyLogMessage entry = null;
-                        foreach (var logPattern in LogPatterns)
+                        if (!string.IsNullOrEmpty(line))
+                            line += currentLine;
+                        if (TryParseInternal(line, out var entry))
                         {
-                            if (TryParse(line, logPattern, out entry))
-                            {
-                                break;
-                            }
+                            line = string.Empty;
+                        }
+                        else
+                        {
+                            if (string.IsNullOrEmpty(line))
+                                line = currentLine;
+                            continue;
                         }
 
                         if (entry != null)
