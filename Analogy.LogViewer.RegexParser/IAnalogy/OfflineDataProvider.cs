@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.LogViewer.RegexParser.Properties;
 
 namespace Analogy.LogViewer.RegexParser.IAnalogy
 {
@@ -15,8 +16,9 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
     {
         public virtual Guid Id { get; set; } = new Guid("F90ECD07-0CD4-4B90-987F-851D6BB5F11A");
         public virtual string OptionalTitle { get; set; } = "Regex Parser";
-        public virtual Image LargeImage { get; set; } = null;
-        public virtual Image SmallImage { get; set; } = null;
+        public Image SmallImage { get; set; } = Resources.AnalogyRegex32x32;
+
+        public Image LargeImage { get; set; } = Resources.AnalogyRegex16x16;
 
         public virtual bool CanSaveToLogFile { get; } = false;
         public virtual string FileOpenDialogFilters => UserSettingsManager.UserSettings.Settings.FileOpenDialogFilters;

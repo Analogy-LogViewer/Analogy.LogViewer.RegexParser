@@ -379,8 +379,7 @@ namespace Analogy.LogViewer.RegexParser
                     string currentLine;
                     while ((currentLine = await streamReader.ReadLineAsync().ConfigureAwait(false)) != null)
                     {
-                        if (!string.IsNullOrEmpty(line))
-                            line += currentLine;
+                        line += currentLine;
                         if (TryParseInternal(line, out var entry))
                         {
                             line = string.Empty;
