@@ -2,6 +2,8 @@
 using Analogy.Interfaces.Factories;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using Analogy.LogViewer.RegexParser.Properties;
 
 namespace Analogy.LogViewer.RegexParser.IAnalogy
 {
@@ -13,5 +15,8 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
         public IEnumerable<IAnalogyChangeLog> ChangeLog { get; set; } = ChangeLogList.GetChangeLog();
         public IEnumerable<string> Contributors { get; set; } = new List<string> { "Lior Banai" };
         public string About { get; set; } = "Regular Expression Parser for Analogy Log Viewer";
+        public Image SmallImage { get; set; } = Resources.AnalogyRegex32x32;
+
+        public Image LargeImage { get; set; } = Resources.AnalogyRegex16x16;
     }
 }
