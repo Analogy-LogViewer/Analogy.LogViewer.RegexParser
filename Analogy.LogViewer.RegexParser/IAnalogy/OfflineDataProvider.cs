@@ -39,7 +39,7 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
             => (Color.Empty, Color.Empty);
 
         private RegexParser Parser { get; set; }
-        public OfflineDataProvider() : this(false)
+        public OfflineDataProvider() : this(true)
         {
         }
 
