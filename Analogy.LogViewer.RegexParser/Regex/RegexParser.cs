@@ -132,7 +132,7 @@ namespace Analogy.LogViewer.RegexParser
                                 switch (value)
                                 {
                                     case "OFF":
-                                        m.Level = AnalogyLogLevel.Disabled;
+                                        m.Level = AnalogyLogLevel.None;
                                         break;
                                     case "TRACE":
                                         m.Level = AnalogyLogLevel.Trace;
@@ -141,7 +141,7 @@ namespace Analogy.LogViewer.RegexParser
                                         m.Level = AnalogyLogLevel.Debug;
                                         break;
                                     case "INFO":
-                                        m.Level = AnalogyLogLevel.Event;
+                                        m.Level = AnalogyLogLevel.Information;
                                         break;
                                     case "WARN":
                                         m.Level = AnalogyLogLevel.Warning;
@@ -186,7 +186,7 @@ namespace Analogy.LogViewer.RegexParser
             catch (Exception e)
             {
                 string error = $"Error parsing line: {e.Message}";
-                Logger?.LogException(e, nameof(RegexParser), error);
+                Logger?.LogException(error,e, nameof(RegexParser));
                 message = new AnalogyLogMessage(error, AnalogyLogLevel.Error, AnalogyLogClass.General,
                     nameof(RegexParser));
                 return false;
@@ -279,7 +279,7 @@ namespace Analogy.LogViewer.RegexParser
                                 switch (value)
                                 {
                                     case "OFF":
-                                        m.Level = AnalogyLogLevel.Disabled;
+                                        m.Level = AnalogyLogLevel.None;
                                         break;
                                     case "TRACE":
                                         m.Level = AnalogyLogLevel.Trace;
@@ -288,7 +288,7 @@ namespace Analogy.LogViewer.RegexParser
                                         m.Level = AnalogyLogLevel.Debug;
                                         break;
                                     case "INFO":
-                                        m.Level = AnalogyLogLevel.Event;
+                                        m.Level = AnalogyLogLevel.Information;
                                         break;
                                     case "WARN":
                                         m.Level = AnalogyLogLevel.Warning;

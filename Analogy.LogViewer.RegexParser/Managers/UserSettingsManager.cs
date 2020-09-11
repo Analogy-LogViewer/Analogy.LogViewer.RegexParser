@@ -29,7 +29,7 @@ namespace Analogy.LogViewer.RegexParser.Managers
                 }
                 catch (Exception ex)
                 {
-                    LogManager.Instance.LogException(ex, "Analogy Regex Parser", "Error loading user setting file");
+                    LogManager.Instance.LogException("Error loading user setting file",ex, "Analogy Regex Parser");
                     Settings = new RegexSettings();
 
                 }
@@ -49,7 +49,7 @@ namespace Analogy.LogViewer.RegexParser.Managers
             }
             catch (Exception e)
             {
-                LogManager.Instance.LogException(e, "Analogy Regular Expression Parser", "Error saving settings: " + e.Message);
+                LogManager.Instance.LogException( "Error saving settings: " + e.Message,e, "Analogy Regular Expression Parser");
             }
 
 
