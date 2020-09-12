@@ -16,8 +16,8 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
         public override IEnumerable<IAnalogyChangeLog> ChangeLog { get; set; } = ChangeLogList.GetChangeLog();
         public override IEnumerable<string> Contributors { get; set; } = new List<string> { "Lior Banai" };
         public override string About { get; set; } = "Regular Expression Parser for Analogy Log Viewer";
-        public override Image SmallImage { get; set; } = Resources.AnalogyRegex32x32;
-        public override Image LargeImage { get; set; } = Resources.AnalogyRegex16x16;
+        public override Image SmallImage { get; set; } = Resources.AnalogyRegex16x16;
+        public override Image LargeImage { get; set; } = Resources.AnalogyRegex32x32;
 
     }
 }
