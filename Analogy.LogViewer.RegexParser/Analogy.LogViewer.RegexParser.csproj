@@ -20,10 +20,8 @@
 		<PackageIcon>AnalogyRegex.png</PackageIcon>
 		<PackageIconUrl />
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>1.5.0</Version>
-		<AssemblyVersion>1.5.0.0</AssemblyVersion>
+		<Version>1.5.1</Version>
 		<Company>Analogy.LogViewer</Company>
-		<FileVersion>1.5.0.0</FileVersion>
 		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
 	</PropertyGroup>
 
