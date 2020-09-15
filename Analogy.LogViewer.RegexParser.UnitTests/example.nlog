@@ -1,0 +1,4 @@
+2020-09-15 13:50:25.1222|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|User profile is available. Using 'C:\Windows\system32\config\systemprofile\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.|ECGAcquisitionService|8468
+2020-09-15 13:50:25.8612|INFO|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:5060|ECGAcquisitionService|8468
+2020-09-15 13:50:25.8771|INFO|Microsoft.Hosting.Lifetime|Now listening on: http://localhost:5060|ECGAcquisitionService|8468
+2020-09-15 13:50:25.8903|INFO|Microsoft.Hosting.Lifetime|Application started. Hosting environment: Production; Content root path: C:\Kalpa\EcgAcquisitionService\|ECGAcquisitionService|8468
