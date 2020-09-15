@@ -51,7 +51,7 @@ the available tags to use for parsing are:
     FileName,
     User,
     LineNumber,
-    ProcessID,
+    ProcessId,
     Thread,
     Level,
     Class,
