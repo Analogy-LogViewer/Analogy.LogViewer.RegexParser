@@ -81,5 +81,8 @@ jobs:
       - name: Add private GitHub registry to NuGet
         run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/Analogy-LogViewer/index.json -Username Analogy-LogViewer -Password ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push generated package to GitHub registry
-        run: nuget push .\SOLUTION_FOLDER\PROJECT_FOLDER\out\*.nupkg -Source "GPR" -SkipDuplicate
+      - name: 'Dotnet NuGet Push to github registry'     
+        run: |
+          Get-ChildItem .\artifactory -Filter *.nupkg |
+          Where-Object { !$_.Name.Contains('preview') } |
+          ForEach-Object { nuget push $_  -Source "GPR" -SkipDuplicate } 
