@@ -11,7 +11,7 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
 {
     public class DownloadInformation : Analogy.LogViewer.Template.AnalogyDownloadInformation
     {
-        protected override string RepositoryURL { get; set; } = "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.Analogy.LogViewer.RegexParser";
+        protected override string RepositoryURL { get; set; } = "https://api.github.com/repos/Analogy-LogViewer/Analogy.LogViewer.RegexParser";
         public override TargetFrameworkAttribute CurrentFrameworkAttribute { get; set; } = (TargetFrameworkAttribute)Assembly.GetExecutingAssembly().GetCustomAttribute(typeof(TargetFrameworkAttribute));
 
         public override Guid FactoryId { get; set; } = RegexPrimaryFactory.Id;
