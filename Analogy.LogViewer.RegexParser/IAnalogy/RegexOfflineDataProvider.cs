@@ -23,7 +23,7 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
         public override Image LargeImage { get; set; } = Resources.AnalogyRegex16x16;
 
         public override string FileOpenDialogFilters => UserSettingsManager.UserSettings.Settings.FileOpenDialogFilters;
-        public override IEnumerable<string> SupportFormats { get; set; } = UserSettingsManager.UserSettings.Settings.SupportFormats;
+        public override IEnumerable<string> SupportFormats  => UserSettingsManager.UserSettings.Settings.SupportFormats;
 
         public override string InitialFolderFullPath =>
             (!string.IsNullOrEmpty(UserSettingsManager.UserSettings.Settings.Directory) &&

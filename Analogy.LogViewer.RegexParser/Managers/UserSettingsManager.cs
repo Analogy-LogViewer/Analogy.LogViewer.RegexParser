@@ -11,7 +11,7 @@ namespace Analogy.LogViewer.RegexParser.Managers
         private static readonly Lazy<UserSettingsManager> _instance =
             new Lazy<UserSettingsManager>(() => new UserSettingsManager());
         public static UserSettingsManager UserSettings { get; set; } = _instance.Value;
-        public string RegexFileSetting { get; private set; } = "AnalogyRegexSettings.json";
+        public string RegexFileSetting { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Analogy.LogViewer", "AnalogyRegexSettings.json");
         public RegexSettings Settings { get; set; }
 
 
