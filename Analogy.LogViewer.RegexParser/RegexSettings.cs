@@ -14,15 +14,10 @@ namespace Analogy.LogViewer.RegexParser
         {
             Directory = string.Empty;
             FileOpenDialogFilters = "All Supported formats (*.log)|*.log|Plain log text file (*.log)|*.log";
-            RegexPatterns = new List<RegexPattern>
-            {
-                new RegexPattern(
-                    @"\$(?<Date>\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2},\d{3})+\|+(?<Thread>\d+)+\|(?<Level>\w+)+\|+(?<Source>.*)\|(?<Text>.*)",
-                    "yyyy-MM-dd HH:mm:ss,fff", "", new List<string> {"*.log"})
-            };
+            RegexPatterns = new List<RegexPattern>();
         }
 
-
+        public bool Contains(RegexPattern regexPattern) => RegexPatterns.Contains(regexPattern);
 
 
     }
