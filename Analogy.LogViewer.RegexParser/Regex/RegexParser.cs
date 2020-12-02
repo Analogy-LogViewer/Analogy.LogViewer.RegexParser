@@ -160,7 +160,9 @@ namespace Analogy.LogViewer.RegexParser
                                 continue;
                             case AnalogyLogMessagePropertyName.Class:
                                 if (string.IsNullOrEmpty(value))
+                                {
                                     m.Class = AnalogyLogClass.General;
+                                }
                                 else
                                 {
                                     m.Class = Enum.TryParse(value, true, out AnalogyLogClass cls) &&
@@ -307,7 +309,9 @@ namespace Analogy.LogViewer.RegexParser
                                 continue;
                             case AnalogyLogMessagePropertyName.Class:
                                 if (string.IsNullOrEmpty(value))
+                                {
                                     m.Class = AnalogyLogClass.General;
+                                }
                                 else
                                 {
                                     m.Class = Enum.TryParse(value, true, out AnalogyLogClass cls) &&
@@ -387,14 +391,20 @@ namespace Analogy.LogViewer.RegexParser
                         else
                         {
                             if (string.IsNullOrEmpty(line))
+                            {
                                 line = currentLine;
+                            }
+
                             continue;
                         }
 
                         if (entry != null)
                         {
                             if (updateUIAfterEachParsedLine)
+                            {
                                 messagesHandler.AppendMessage(entry, fileName);
+                            }
+
                             _current = entry;
                             _messages.Add(_current);
                         }
@@ -420,7 +430,10 @@ namespace Analogy.LogViewer.RegexParser
             }
 
             if (!updateUIAfterEachParsedLine) //update only at the end
+            {
                 messagesHandler.AppendMessages(_messages, fileName);
+            }
+
             return _messages;
         }
 

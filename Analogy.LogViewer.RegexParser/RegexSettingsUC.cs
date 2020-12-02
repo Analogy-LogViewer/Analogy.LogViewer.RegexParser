@@ -110,7 +110,11 @@ namespace Analogy.LogViewer.RegexParser
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtbRegEx.Text) || string.IsNullOrEmpty(txtbSupportedFiles.Text)) return;
+            if (string.IsNullOrEmpty(txtbRegEx.Text) || string.IsNullOrEmpty(txtbSupportedFiles.Text))
+            {
+                return;
+            }
+
             var files = GetFiles();
             var rp = new RegexPattern(txtbRegEx.Text, txtbDateTimeFormat.Text, txtbGuidFormat.Text, files);
             lstbRegularExpressions.Items.Add(rp);
