@@ -349,3 +349,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /Analogy.LogViewer.RegexParser/Properties/launchSettings.json
+/Visual Studio 2019/Visualizers/attribcache140.bin
