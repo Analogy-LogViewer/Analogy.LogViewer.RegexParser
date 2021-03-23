@@ -1,5 +1,6 @@
 ﻿using Analogy.Interfaces;
 using System.Collections.Generic;
+using Analogy.Interfaces.DataTypes;
 
 namespace Analogy.LogViewer.Serilog.UnitTests
 {
@@ -18,6 +19,11 @@ namespace Analogy.LogViewer.Serilog.UnitTests
         public void AppendMessages(List<AnalogyLogMessage> messages, string dataSource)
         {
             this.messages.AddRange(messages);
+        }
+
+        public void ReportFileReadProgress(AnalogyFileReadProgress progress)
+        {
+            //noop
         }
 
         public bool ForceNoFileCaching { get; set; }
