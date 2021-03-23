@@ -13,7 +13,7 @@
 		<StartupObject />
 		<Authors>Lior Banai</Authors>
 		<Description>Regular Expression Parser for Analogy Log Viewer</Description>
-		<Copyright>Lior Banai © 2020</Copyright>
+		<Copyright>Lior Banai © 2020-2021</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.RegexParser</RepositoryUrl>
@@ -22,7 +22,7 @@
 		<PackageIcon>AnalogyRegex.png</PackageIcon>
 		<PackageIconUrl />
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>1.8.3</Version>
+		<Version>1.8.3.1</Version>
 		<Company>Analogy.LogViewer</Company>
 		<Nullable>enable</Nullable>
 		<LangVersion>8.0</LangVersion>
@@ -30,7 +30,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.12.0" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.12.1" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="1.8.3" />
 		<PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.0.0">
 			<PrivateAssets>all</PrivateAssets>
