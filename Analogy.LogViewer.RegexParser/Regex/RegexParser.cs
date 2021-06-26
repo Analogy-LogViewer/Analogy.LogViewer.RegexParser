@@ -13,7 +13,7 @@ namespace Analogy.LogViewer.RegexParser
 {
     public class RegexParser
     {
-        private AnalogyLogMessage _current;
+        private AnalogyLogMessage? _current;
         private RegexPattern _matchedPattern;
         private readonly List<AnalogyLogMessage> _messages = new List<AnalogyLogMessage>();
         private List<RegexPattern> _logPatterns;
@@ -204,8 +204,16 @@ namespace Analogy.LogViewer.RegexParser
                                         : AnalogyLogClass.General;
 
                                 }
-
                                 continue;
+                            case AnalogyLogMessagePropertyName.RawText:
+                                m.RawText = value;
+                                break;
+                            case AnalogyLogMessagePropertyName.RawTextType:
+                                m.RawTextType = Enum.TryParse(value, true, out AnalogyRowTextType rt) &&
+                                              Enum.IsDefined(typeof(AnalogyLogClass), rt)
+                                        ? rt
+                                        : AnalogyRowTextType.Unknown;
+                                break;
                             default:
                                 throw new ArgumentOutOfRangeException();
                         }
