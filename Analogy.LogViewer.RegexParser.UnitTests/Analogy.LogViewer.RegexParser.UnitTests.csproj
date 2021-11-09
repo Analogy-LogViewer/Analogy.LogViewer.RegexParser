@@ -2,7 +2,7 @@
   <PropertyGroup>
     <RootNamespace>Analogy.LogViewer.Serilog.UnitTests</RootNamespace>
     <AssemblyName>Analogy.LogViewer.Serilog.UnitTests</AssemblyName>
-    <TargetFrameworks>net5.0-windows</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows</TargetFrameworks>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
