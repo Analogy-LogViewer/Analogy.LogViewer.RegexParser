@@ -2,7 +2,7 @@
   <PropertyGroup>
     <RootNamespace>Analogy.LogViewer.Serilog.UnitTests</RootNamespace>
     <AssemblyName>Analogy.LogViewer.Serilog.UnitTests</AssemblyName>
-    <TargetFrameworks>net5.0-windows;net48</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows;net48;net471;net472;netcoreapp3.1</TargetFrameworks>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
@@ -21,10 +21,10 @@
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
-    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.14.6" />
+    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.15.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.7" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.7" />
-    <PackageReference Include="System.Resources.Extensions" Version="5.0.0" />
+    <PackageReference Include="System.Resources.Extensions" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Analogy.LogViewer.RegexParser\Analogy.LogViewer.RegexParser.csproj" />
