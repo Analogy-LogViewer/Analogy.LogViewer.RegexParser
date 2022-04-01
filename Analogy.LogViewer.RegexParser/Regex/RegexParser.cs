@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Analogy.Interfaces.DataTypes;
 
 namespace Analogy.LogViewer.RegexParser
 {
@@ -239,6 +240,7 @@ namespace Analogy.LogViewer.RegexParser
             ILogMessageCreatedHandler messagesHandler)
         {
             _messages.Clear();
+            long count = 0;
             using (var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
                 bool TryParseInternal(string line, out AnalogyLogMessage msg)
@@ -295,6 +297,8 @@ namespace Analogy.LogViewer.RegexParser
                             if (updateUIAfterEachParsedLine)
                             {
                                 messagesHandler.AppendMessage(entry, fileName);
+                                count++;
+                                messagesHandler.ReportFileReadProgress(new AnalogyFileReadProgress(AnalogyFileReadProgressType.Incremental, 1, count, count));
                             }
 
                             _current = entry;
