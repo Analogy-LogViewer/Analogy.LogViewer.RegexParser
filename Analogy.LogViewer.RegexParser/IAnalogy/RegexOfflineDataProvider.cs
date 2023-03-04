@@ -23,7 +23,7 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
         public override Image LargeImage { get; set; } = Resources.AnalogyRegex16x16;
 
         public override string FileOpenDialogFilters => UserSettingsManager.UserSettings.Settings.FileOpenDialogFilters;
-        public override IEnumerable<string> SupportFormats  => UserSettingsManager.UserSettings.Settings.SupportFormats;
+        public override IEnumerable<string> SupportFormats => UserSettingsManager.UserSettings.Settings.SupportFormats;
 
         public override string InitialFolderFullPath =>
             (!string.IsNullOrEmpty(UserSettingsManager.UserSettings.Settings.Directory) &&
@@ -41,13 +41,16 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
             Parser = new RegexParser(UserSettingsManager.UserSettings.Settings.RegexPatterns, updateUiAfterEachLine,
                 LogManager.Instance);
         }
-        public override async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
+        public override async Task<IEnumerable<IAnalogyLogMessage>> Process(string fileName, CancellationToken token, ILogMessageCreatedHandler messagesHandler)
         {
             if (CanOpenFile(fileName))
             {
+                DateTime start = DateTime.Now;
+                RaiseProcessingStarted(new AnalogyStartedProcessingArgs(start, ""));
                 Parser.SetRegexPatterns(UserSettingsManager.UserSettings.Settings.RegexPatterns);
-                return await Parser.ParseLog(fileName, token, messagesHandler);
-
+                var result = await Parser.ParseLog(fileName, token, messagesHandler);
+                RaiseProcessingFinished(new AnalogyEndProcessingArgs(start,DateTime.Now,"",result.Count));
+                return result;
             }
             AnalogyLogMessage m = new AnalogyLogMessage($"File {fileName} is not supported", AnalogyLogLevel.Warning, AnalogyLogClass.General, OptionalTitle);
             messagesHandler.AppendMessage(m, OptionalTitle);

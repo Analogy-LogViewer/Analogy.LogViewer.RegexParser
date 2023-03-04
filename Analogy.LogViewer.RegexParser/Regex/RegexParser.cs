@@ -16,7 +16,7 @@ namespace Analogy.LogViewer.RegexParser
     {
         private AnalogyLogMessage? _current;
         private RegexPattern _matchedPattern;
-        private readonly List<AnalogyLogMessage> _messages = new List<AnalogyLogMessage>();
+        private readonly List<IAnalogyLogMessage> _messages = new List<IAnalogyLogMessage>();
         private List<RegexPattern> _logPatterns;
         private readonly bool updateUIAfterEachParsedLine;
         private IAnalogyLogger Logger { get; }
@@ -116,9 +116,6 @@ namespace Analogy.LogViewer.RegexParser
                                 continue;
                             case AnalogyLogMessagePropertyName.Text:
                                 m.Text = value;
-                                continue;
-                            case AnalogyLogMessagePropertyName.Category:
-                                m.Category = value;
                                 continue;
                             case AnalogyLogMessagePropertyName.Source:
                                 m.Source = value;
@@ -236,9 +233,10 @@ namespace Analogy.LogViewer.RegexParser
             }
         }
 
-        public async Task<List<AnalogyLogMessage>> ParseLog(string fileName, CancellationToken token,
+        public async Task<List<IAnalogyLogMessage>> ParseLog(string fileName, CancellationToken token,
             ILogMessageCreatedHandler messagesHandler)
         {
+
             _messages.Clear();
             long count = 0;
             using (var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
