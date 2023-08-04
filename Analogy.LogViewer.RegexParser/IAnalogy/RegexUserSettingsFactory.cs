@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Analogy.Interfaces;
 using Analogy.LogViewer.Template;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.LogViewer.RegexParser.IAnalogy
 {
@@ -17,7 +18,7 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
         public override Guid FactoryId { get; set; } = RegexPrimaryFactory.Id;
         public override Guid Id { get; set; } = new Guid("108B0266-E0FB-4A02-B62F-DBB55CA4FEF8");
 
-        public override void CreateUserControl(IAnalogyLogger logger)
+        public override void CreateUserControl(ILogger logger)
         {
            DataProviderSettings = new RegexSettingsUC();
         }

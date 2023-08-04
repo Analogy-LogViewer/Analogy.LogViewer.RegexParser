@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using Analogy.LogViewer.Template.Managers;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.LogViewer.RegexParser.Managers
 {
@@ -30,7 +31,7 @@ namespace Analogy.LogViewer.RegexParser.Managers
                 }
                 catch (Exception ex)
                 {
-                    LogManager.Instance.LogException("Error loading user setting file",ex, "Analogy Regex Parser");
+                    LogManager.Instance.LogError(ex, "Error loading user setting file", ex, "Analogy Regex Parser");
                     Settings = new RegexSettings();
 
                 }
@@ -50,7 +51,7 @@ namespace Analogy.LogViewer.RegexParser.Managers
             }
             catch (Exception e)
             {
-                LogManager.Instance.LogException( "Error saving settings: " + e.Message,e, "Analogy Regular Expression Parser");
+                LogManager.Instance.LogError(e , "Error saving settings: " + e.Message, e, "Analogy Regular Expression Parser");
             }
 
 

@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Analogy.Interfaces.DataTypes;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.LogViewer.RegexParser
 {
@@ -19,7 +20,7 @@ namespace Analogy.LogViewer.RegexParser
         private readonly List<IAnalogyLogMessage> _messages = new List<IAnalogyLogMessage>();
         private List<RegexPattern> _logPatterns;
         private readonly bool updateUIAfterEachParsedLine;
-        private IAnalogyLogger Logger { get; }
+        private ILogger Logger { get; }
 
 
         public static IEnumerable<string> RegexMembers { get; }
@@ -37,7 +38,7 @@ namespace Analogy.LogViewer.RegexParser
             }
         }
 
-        public RegexParser(List<RegexPattern> logPatterns, bool updateUIAfterEachLine, IAnalogyLogger logger)
+        public RegexParser(List<RegexPattern> logPatterns, bool updateUIAfterEachLine, ILogger logger)
         {
             _logPatterns = logPatterns;
             Logger = logger;
@@ -73,7 +74,7 @@ namespace Analogy.LogViewer.RegexParser
             catch (Exception e)
             {
                 string error = $"Error parsing line: {e.Message}";
-                Logger?.LogException(error, e, nameof(RegexParser));
+                Logger?.LogError(error, e, nameof(RegexParser));
                 message = new AnalogyLogMessage(error, AnalogyLogLevel.Error, AnalogyLogClass.General,
                     nameof(RegexParser));
                 return false;
@@ -213,7 +214,7 @@ namespace Analogy.LogViewer.RegexParser
                                         : AnalogyRowTextType.Unknown;
                                 break;
                             default:
-                                throw new ArgumentOutOfRangeException();
+                                throw new ArgumentOutOfRangeException($"invalid property: {value}");
                         }
                     }
 
