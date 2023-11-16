@@ -1,6 +1,6 @@
 ﻿using Analogy.Interfaces;
-using System;
 using Analogy.LogViewer.Template.Managers;
+using System;
 
 namespace Analogy.LogViewer.RegexParser.Managers
 {

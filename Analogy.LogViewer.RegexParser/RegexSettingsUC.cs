@@ -44,14 +44,12 @@ namespace Analogy.LogViewer.RegexParser
                     File.WriteAllText(saveFileDialog.FileName, JsonConvert.SerializeObject(Settings));
                     MessageBox.Show("File Saved", @"Export settings", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
-
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error Export: " + ex.Message, @"Error Saving file", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
-
             }
         }
 
@@ -70,7 +68,6 @@ namespace Analogy.LogViewer.RegexParser
                     LoadSettings(settings);
                     MessageBox.Show("File Imported. Save settings if desired", @"Import settings", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
-
                 }
                 catch (Exception ex)
                 {
@@ -122,7 +119,6 @@ namespace Analogy.LogViewer.RegexParser
 
         private List<string> GetFiles()
         {
-
             var files = txtbSupportedFiles.Text.Split(new[] { ";", "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
             return files;
         }
@@ -139,7 +135,7 @@ namespace Analogy.LogViewer.RegexParser
         {
             var files = GetFiles();
             RegexPattern p = new RegexPattern(txtbRegEx.Text, txtbDateTimeFormat.Text, "", files);
-            bool valid = RegexParser.CheckRegex(txtbTest.Text, p, out AnalogyLogMessage m);
+            bool valid = AnalogyRegexParser.CheckRegex(txtbTest.Text, p, out AnalogyLogMessage m);
             if (valid)
             {
                 lblResult.Text = "Valid Regular Expression";
@@ -161,7 +157,7 @@ namespace Analogy.LogViewer.RegexParser
                 {
                     Filter = txtbOpenFileFilters.Text,
                     Title = @"Test Open Files",
-                    Multiselect = true
+                    Multiselect = true,
                 };
                 openFileDialog1.ShowDialog(this);
             }

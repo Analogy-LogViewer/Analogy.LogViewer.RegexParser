@@ -1,7 +1,7 @@
-﻿using System;
-using Analogy.Interfaces;
-using System.Collections.Generic;
+﻿using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using System;
+using System.Collections.Generic;
 
 namespace Analogy.LogViewer.Serilog.UnitTests
 {
@@ -29,6 +29,5 @@ namespace Analogy.LogViewer.Serilog.UnitTests
 
         public bool ForceNoFileCaching { get; set; }
         public bool DoNotAddToRecentHistory { get; set; }
-
     }
 }

@@ -18,7 +18,6 @@ namespace Analogy.LogViewer.RegexParser
             DateTimeFormat = "yyyy-MM-dd HH:mm:ss,fff";
             GuidFormat = string.Empty;
             SupportFormats = new List<string>();
-
         }
         public RegexPattern(string pattern, string dateTimeFormat, string guidFormat, List<string>? supportFormats)
         {

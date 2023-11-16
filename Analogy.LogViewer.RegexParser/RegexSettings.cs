@@ -18,7 +18,5 @@ namespace Analogy.LogViewer.RegexParser
         }
 
         public bool Contains(RegexPattern regexPattern) => RegexPatterns.Contains(regexPattern);
-
-
     }
 }

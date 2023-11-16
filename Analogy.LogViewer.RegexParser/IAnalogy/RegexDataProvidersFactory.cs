@@ -1,8 +1,8 @@
 ﻿using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
+using Analogy.LogViewer.Template;
 using System;
 using System.Collections.Generic;
-using Analogy.LogViewer.Template;
 
 namespace Analogy.LogViewer.RegexParser.IAnalogy
 {
@@ -12,6 +12,5 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
         public override string Title { get; set; } = "Regular Expression Parser";
         public override IEnumerable<IAnalogyDataProvider> DataProviders { get; set; } =
             new List<IAnalogyDataProvider> { new RegexOfflineDataProvider() };
-
     }
 }

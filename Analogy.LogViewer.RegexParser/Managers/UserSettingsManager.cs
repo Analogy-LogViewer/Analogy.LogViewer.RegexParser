@@ -1,20 +1,18 @@
-﻿using Newtonsoft.Json;
+﻿using Analogy.LogViewer.Template.Managers;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.IO;
-using Analogy.LogViewer.Template.Managers;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy.LogViewer.RegexParser.Managers
 {
     public class UserSettingsManager
     {
-
         private static readonly Lazy<UserSettingsManager> _instance =
             new Lazy<UserSettingsManager>(() => new UserSettingsManager());
         public static UserSettingsManager UserSettings { get; set; } = _instance.Value;
         public string RegexFileSetting { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Analogy.LogViewer", "AnalogyRegexSettings.json");
         public RegexSettings Settings { get; set; }
-
 
         public UserSettingsManager()
         {
@@ -22,7 +20,7 @@ namespace Analogy.LogViewer.RegexParser.Managers
             {
                 var settings = new JsonSerializerSettings
                 {
-                    ObjectCreationHandling = ObjectCreationHandling.Replace
+                    ObjectCreationHandling = ObjectCreationHandling.Replace,
                 };
                 try
                 {
@@ -33,14 +31,12 @@ namespace Analogy.LogViewer.RegexParser.Managers
                 {
                     LogManager.Instance.LogError(ex, "Error loading user setting file", ex, "Analogy Regex Parser");
                     Settings = new RegexSettings();
-
                 }
             }
             else
             {
                 Settings = new RegexSettings();
             }
-
         }
 
         public void Save()
@@ -51,10 +47,8 @@ namespace Analogy.LogViewer.RegexParser.Managers
             }
             catch (Exception e)
             {
-                LogManager.Instance.LogError(e , "Error saving settings: " + e.Message, e, "Analogy Regular Expression Parser");
+                LogManager.Instance.LogError(e, "Error saving settings: " + e.Message, e, "Analogy Regular Expression Parser");
             }
-
-
         }
     }
 }

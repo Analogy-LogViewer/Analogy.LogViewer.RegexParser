@@ -186,4 +186,3 @@ namespace Analogy.LogViewer.RegexParser.Utils
         }
     }
 }
-

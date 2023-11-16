@@ -1,4 +1,6 @@
 ﻿using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -8,12 +10,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Analogy.Interfaces.DataTypes;
-using Microsoft.Extensions.Logging;
 
 namespace Analogy.LogViewer.RegexParser
 {
-    public class RegexParser
+    public class AnalogyRegexParser
     {
         private AnalogyLogMessage? _current;
         private RegexPattern _matchedPattern;
@@ -22,11 +22,10 @@ namespace Analogy.LogViewer.RegexParser
         private readonly bool updateUIAfterEachParsedLine;
         private ILogger Logger { get; }
 
-
         public static IEnumerable<string> RegexMembers { get; }
         private static Dictionary<string, AnalogyLogMessagePropertyName> regexMapper;
 
-        static RegexParser()
+        static AnalogyRegexParser()
         {
             var names = Enum.GetNames(typeof(AnalogyLogMessagePropertyName));
             RegexMembers = names;
@@ -38,12 +37,11 @@ namespace Analogy.LogViewer.RegexParser
             }
         }
 
-        public RegexParser(List<RegexPattern> logPatterns, bool updateUIAfterEachLine, ILogger logger)
+        public AnalogyRegexParser(List<RegexPattern> logPatterns, bool updateUIAfterEachLine, ILogger logger)
         {
             _logPatterns = logPatterns;
             Logger = logger;
             updateUIAfterEachParsedLine = updateUIAfterEachLine;
-
         }
 
         public void SetRegexPatterns(List<RegexPattern> logPatterns) => _logPatterns = logPatterns;
@@ -74,9 +72,9 @@ namespace Analogy.LogViewer.RegexParser
             catch (Exception e)
             {
                 string error = $"Error parsing line: {e.Message}";
-                Logger?.LogError(error, e, nameof(RegexParser));
+                Logger?.LogError(error, e, nameof(AnalogyRegexParser));
                 message = new AnalogyLogMessage(error, AnalogyLogLevel.Error, AnalogyLogClass.General,
-                    nameof(RegexParser));
+                    nameof(AnalogyRegexParser));
                 return false;
             }
         }
@@ -201,7 +199,6 @@ namespace Analogy.LogViewer.RegexParser
                                               Enum.IsDefined(typeof(AnalogyLogClass), cls)
                                         ? cls
                                         : AnalogyLogClass.General;
-
                                 }
                                 continue;
                             case AnalogyLogMessagePropertyName.RawText:
@@ -229,7 +226,7 @@ namespace Analogy.LogViewer.RegexParser
             {
                 string error = $"Error parsing line: {e.Message}";
                 message = new AnalogyLogMessage(error, AnalogyLogLevel.Error, AnalogyLogClass.General,
-                    nameof(RegexParser));
+                    nameof(AnalogyRegexParser));
                 return false;
             }
         }
@@ -237,7 +234,6 @@ namespace Analogy.LogViewer.RegexParser
         public async Task<List<IAnalogyLogMessage>> ParseLog(string fileName, CancellationToken token,
             ILogMessageCreatedHandler messagesHandler)
         {
-
             _messages.Clear();
             long count = 0;
             using (var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
@@ -262,13 +258,11 @@ namespace Analogy.LogViewer.RegexParser
                             msg = m2;
                             _matchedPattern = logPattern;
                             return true;
-
                         }
                     }
 
                     msg = null;
                     return false;
-
                 }
                 using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
                 {
@@ -331,6 +325,5 @@ namespace Analogy.LogViewer.RegexParser
 
             return _messages;
         }
-
     }
 }
