@@ -1,4 +1,5 @@
-﻿using Analogy.LogViewer.Template.Managers;
+﻿using Analogy.Interfaces;
+using Analogy.LogViewer.Template.Managers;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
@@ -11,10 +12,17 @@ namespace Analogy.LogViewer.RegexParser.Managers
         private static readonly Lazy<UserSettingsManager> _instance =
             new Lazy<UserSettingsManager>(() => new UserSettingsManager());
         public static UserSettingsManager UserSettings { get; set; } = _instance.Value;
-        public string RegexFileSetting { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Analogy.LogViewer", "AnalogyRegexSettings.json");
+        private string Folder { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Analogy.LogViewer");
+        private string RegexFileSetting => FoldersAccess?.GetConfigurationFilePath("AnalogyRegexSettings.json") ?? Path.Combine(Folder, "AnalogyRegexSettings.json");
+        private IAnalogyFoldersAccess? FoldersAccess { get; set; }
         public RegexSettings Settings { get; set; }
 
         public UserSettingsManager()
+        {
+            LoadSettings();
+        }
+
+        public void LoadSettings()
         {
             if (File.Exists(RegexFileSetting))
             {
@@ -38,7 +46,6 @@ namespace Analogy.LogViewer.RegexParser.Managers
                 Settings = new RegexSettings();
             }
         }
-
         public void Save()
         {
             try
@@ -49,6 +56,15 @@ namespace Analogy.LogViewer.RegexParser.Managers
             {
                 LogManager.Instance.LogError(e, "Error saving settings: " + e.Message, e, "Analogy Regular Expression Parser");
             }
+        }
+
+        public void LoadSettings(IAnalogyFoldersAccess foldersAccess, ILogger logger)
+        {
+            foldersAccess.RootFolderChanged += (s, e) =>
+            {
+                Save();
+            };
+            FoldersAccess = foldersAccess;
         }
     }
 }

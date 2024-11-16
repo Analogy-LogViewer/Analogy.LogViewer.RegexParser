@@ -1,10 +1,13 @@
 ﻿using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
+using Analogy.LogViewer.RegexParser.Managers;
 using Analogy.LogViewer.RegexParser.Properties;
 using Analogy.LogViewer.Template;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading.Tasks;
 
 namespace Analogy.LogViewer.RegexParser.IAnalogy
 {
@@ -18,5 +21,10 @@ namespace Analogy.LogViewer.RegexParser.IAnalogy
         public override string About { get; set; } = "Regular Expression Parser for Analogy Log Viewer";
         public override Image SmallImage { get; set; } = Resources.AnalogyRegex16x16;
         public override Image LargeImage { get; set; } = Resources.AnalogyRegex32x32;
+        public override Task InitializeFactory(IAnalogyFoldersAccess foldersAccess, ILogger logger)
+        {
+            UserSettingsManager.UserSettings.LoadSettings(foldersAccess, logger);
+            return Task.CompletedTask;
+        }
     }
 }
