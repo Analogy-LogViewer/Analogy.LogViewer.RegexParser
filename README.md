@@ -32,22 +32,24 @@ the available tags to use for parsing are:
 
    ```csharp
    public enum AnalogyLogMessagePropertyName
-  {
-    Date,
-    ID,
-    Text,
-    Category,
-    Source,
-    Module,
-    MethodName,
-    FileName,
-    User,
-    LineNumber,
-    ProcessId,
-    Thread,
-    Level,
-    Class,
-  }
+   {
+       Date,
+       Id,
+       Text,
+       Source,
+       MethodName,
+       FileName,
+       LineNumber,
+       Class,
+       Level,
+       Module,
+       MachineName,
+       ProcessId,
+       ThreadId,
+       User,
+       RawText,
+       RawTextType,
+   }
  ```
 which corresponding to AnalogyLogMessage fields
 
