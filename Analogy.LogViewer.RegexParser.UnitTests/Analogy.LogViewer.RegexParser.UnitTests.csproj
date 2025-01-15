@@ -24,7 +24,7 @@
     <PackageReference Include="Analogy.LogViewer.Interfaces" Version="7.2.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.7.1" />
     <PackageReference Include="MSTest.TestFramework" Version="3.7.1" />
-    <PackageReference Include="System.Resources.Extensions" Version="9.0.0" />
+    <PackageReference Include="System.Resources.Extensions" Version="9.0.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Analogy.LogViewer.RegexParser\Analogy.LogViewer.RegexParser.csproj" />
