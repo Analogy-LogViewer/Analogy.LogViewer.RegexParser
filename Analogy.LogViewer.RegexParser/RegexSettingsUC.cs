@@ -1,6 +1,5 @@
 ﻿using Analogy.Interfaces;
 using Analogy.LogViewer.RegexParser.Managers;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -41,7 +40,7 @@ namespace Analogy.LogViewer.RegexParser
                 SaveSettings();
                 try
                 {
-                    File.WriteAllText(saveFileDialog.FileName, JsonConvert.SerializeObject(Settings));
+                    File.WriteAllText(saveFileDialog.FileName, System.Text.Json.JsonSerializer.Serialize(Settings));
                     MessageBox.Show("File Saved", @"Export settings", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }
@@ -64,7 +63,7 @@ namespace Analogy.LogViewer.RegexParser
                 try
                 {
                     var json = File.ReadAllText(openFileDialog1.FileName);
-                    RegexSettings settings = JsonConvert.DeserializeObject<RegexSettings>(json);
+                    RegexSettings settings = System.Text.Json.JsonSerializer.Deserialize<RegexSettings>(json);
                     LoadSettings(settings);
                     MessageBox.Show("File Imported. Save settings if desired", @"Import settings", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);

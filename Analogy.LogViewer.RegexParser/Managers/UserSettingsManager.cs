@@ -1,7 +1,6 @@
 ﻿using Analogy.Interfaces;
 using Analogy.LogViewer.Template.Managers;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System;
 using System.IO;
 
@@ -26,14 +25,10 @@ namespace Analogy.LogViewer.RegexParser.Managers
         {
             if (File.Exists(RegexFileSetting))
             {
-                var settings = new JsonSerializerSettings
-                {
-                    ObjectCreationHandling = ObjectCreationHandling.Replace,
-                };
                 try
                 {
                     string data = File.ReadAllText(RegexFileSetting);
-                    Settings = JsonConvert.DeserializeObject<RegexSettings>(data, settings);
+                    Settings = System.Text.Json.JsonSerializer.Deserialize<RegexSettings>(data);
                 }
                 catch (Exception ex)
                 {
@@ -50,7 +45,7 @@ namespace Analogy.LogViewer.RegexParser.Managers
         {
             try
             {
-                File.WriteAllText(RegexFileSetting, JsonConvert.SerializeObject(Settings));
+                File.WriteAllText(RegexFileSetting, System.Text.Json.JsonSerializer.Serialize(Settings));
             }
             catch (Exception e)
             {
