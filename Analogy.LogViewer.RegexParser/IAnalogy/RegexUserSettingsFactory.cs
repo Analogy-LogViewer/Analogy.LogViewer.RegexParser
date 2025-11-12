@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Analogy.LogViewer.RegexParser.IAnalogy
 {
-    public class RegexUserSettingsFactory : TemplateUserSettingsFactory
+    public class RegexUserSettingsFactory : TemplateUserSettingsFactoryWinForms
     {
         public override string Title { get; set; } = "Regex User Settings";
         public override UserControl DataProviderSettings { get; set; }

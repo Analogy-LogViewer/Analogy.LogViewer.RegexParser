@@ -21,7 +21,7 @@
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
-    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="8.1.0" />
+    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="9.0.0-rc2" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.8.3" />
     <PackageReference Include="MSTest.TestFramework" Version="3.8.3" />
     <PackageReference Include="System.Resources.Extensions" Version="9.0.4" />

@@ -1,16 +1,17 @@
 ﻿using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
+using Analogy.Interfaces.WinForms;
 using Analogy.LogViewer.Template;
 using System;
 using System.Collections.Generic;
 
 namespace Analogy.LogViewer.RegexParser.IAnalogy
 {
-    public class RegexDataProvidersFactory : DataProvidersFactory
+    public class RegexDataProvidersFactory : DataProvidersFactoryWinForms
     {
         public override Guid FactoryId { get; set; } = RegexPrimaryFactory.Id;
         public override string Title { get; set; } = "Regular Expression Parser";
-        public override IEnumerable<IAnalogyDataProvider> DataProviders { get; set; } =
-            new List<IAnalogyDataProvider> { new RegexOfflineDataProvider() };
+        public override IEnumerable<IAnalogyDataProviderWinForms> DataProviders { get; set; } =
+            new List<IAnalogyDataProviderWinForms> { new RegexOfflineDataProvider() };
     }
 }

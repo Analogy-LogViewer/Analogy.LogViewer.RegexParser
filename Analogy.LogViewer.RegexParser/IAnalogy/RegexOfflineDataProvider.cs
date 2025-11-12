@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Analogy.LogViewer.RegexParser.IAnalogy
 {
-    public class RegexOfflineDataProvider : OfflineDataProvider
+    public class RegexOfflineDataProvider : OfflineDataProviderWinForms
     {
         public override Guid Id { get; set; } = new Guid("F90ECD07-0CD4-4B90-987F-851D6BB5F11A");
         public override string OptionalTitle { get; set; } = "Regex Parser";

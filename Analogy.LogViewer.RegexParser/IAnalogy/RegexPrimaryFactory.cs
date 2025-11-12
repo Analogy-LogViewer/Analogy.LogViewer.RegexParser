@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Analogy.LogViewer.RegexParser.IAnalogy
 {
-    public class RegexPrimaryFactory : PrimaryFactory
+    public class RegexPrimaryFactory : PrimaryFactoryWinForms
     {
         internal static Guid Id = new Guid("7DA2570C-92AA-423F-BCD8-43BB877463F6");
         public override Guid FactoryId { get; set; } = Id;
