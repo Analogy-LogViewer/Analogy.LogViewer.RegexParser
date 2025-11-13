@@ -1,8 +1,7 @@
 ﻿using Analogy.Interfaces;
-using Analogy.Interfaces.Factories;
 using Analogy.LogViewer.RegexParser.Managers;
 using Analogy.LogViewer.RegexParser.Properties;
-using Analogy.LogViewer.Template;
+using Analogy.LogViewer.Template.WinForms;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
