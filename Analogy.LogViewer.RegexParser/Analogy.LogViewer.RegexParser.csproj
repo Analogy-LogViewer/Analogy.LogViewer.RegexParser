@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
 		<TargetFrameworks>net10.0-windows;net9.0-windows;net8.0-windows;net48</TargetFrameworks>
@@ -15,16 +15,16 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Analogy.CommonUtilities" Version="9.0.6" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="9.0.6" />
-		<PackageReference Include="Analogy.LogViewer.Interfaces.Winforms" Version="9.0.6" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="9.0.6" />
-		<PackageReference Include="Analogy.LogViewer.Template.WinForms" Version="9.0.6" />
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.300">
+		<PackageReference Include="Analogy.CommonUtilities" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces.Winforms" />
+		<PackageReference Include="Analogy.LogViewer.Template" />
+		<PackageReference Include="Analogy.LogViewer.Template.WinForms" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="System.Resources.Extensions" Version="10.0.10" />
+		<PackageReference Include="System.Resources.Extensions" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="Properties\Resources.Designer.cs">
